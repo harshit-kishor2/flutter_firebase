@@ -41,6 +41,8 @@ dependencies:
   intl: ^0.17.0
   shared_preferences: ^2.0.13
   url_launcher: ^6.0.20
+  flutter_localizations:
+    sdk: flutter
 
 dev_dependencies:
   flutter_lints: ^1.0.0

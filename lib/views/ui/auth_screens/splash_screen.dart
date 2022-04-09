@@ -20,23 +20,28 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     super.initState();
-    context.read<LoginBloc>().add(CheckAuthenticationEvent());
+    context.read<AppConfigCubit>().checkAuthentication();
   }
 
   @override
   Widget build(BuildContext context) {
     return CustomScaffold(
-      child: BlocListener<LoginBloc, LoginState>(
+      child: BlocListener<AppConfigCubit, AppConfigState>(
         listener: (context, state) {
-          if (state.isAuthenticateStatus is EventLoaded) {
-            if (state.isAuthenticate) {
-              Navigator.pushReplacementNamed(context, RoutesConst.dashboard);
-            } else {
-              Navigator.pushReplacementNamed(context, RoutesConst.login);
-            }
-          }
-          if (state.isAuthenticateStatus is EventFailed) {
-            Navigator.pushReplacementNamed(context, RoutesConst.login);
+          if (state.isAuth) {
+            Future.delayed(
+              const Duration(seconds: 3),
+              () {
+                Navigator.pushReplacementNamed(context, RoutesConst.dashboard);
+              },
+            );
+          } else {
+            Future.delayed(
+              const Duration(seconds: 3),
+              () {
+                Navigator.pushReplacementNamed(context, RoutesConst.login);
+              },
+            );
           }
         },
         child: Column(
