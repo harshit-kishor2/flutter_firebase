@@ -12,6 +12,10 @@ import 'package:flutter_firebase/views/index.dart';
 class RoutesConst {
   // Routes Name
   static const splash = '/splash';
+  static const login = '/login';
+  static const register = '/register';
+  static const forgotPassword = '/forgot-password';
+  static const dashboard = '/dashboard';
 
   //Router...
   static Route<dynamic> generateRoute(RouteSettings settings) {
@@ -26,7 +30,30 @@ class RoutesConst {
           widget: const SplashScreen(),
           routeName: settings.name,
         );
-
+//! Login Route
+      case login:
+        return _GeneratePageRoute(
+          widget: const LoginScreen(),
+          routeName: settings.name,
+        );
+      //! Register Route
+      case register:
+        return _GeneratePageRoute(
+          widget: const RegisterScreen(),
+          routeName: settings.name,
+        );
+      //! Forgot Route
+      case forgotPassword:
+        return _GeneratePageRoute(
+          widget: const ForgotPasswordScreen(),
+          routeName: settings.name,
+        );
+      //! Forgot Route
+      case dashboard:
+        return _GeneratePageRoute(
+          widget: const DashboardScreen(),
+          routeName: settings.name,
+        );
       //! Default route (Invalid Url)
       default:
         return _GeneratePageRoute(
