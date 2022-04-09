@@ -4,8 +4,9 @@ import 'package:flutter_firebase/helpers/index.dart';
 import 'package:flutter_firebase/injection_container.dart' as di;
 import 'package:flutter_firebase/router_generator.dart';
 import 'package:flutter_firebase/view_models/index.dart';
-
-import 'views/index.dart';
+import 'package:flutter_firebase/views/index.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
+import 'generated/l10n.dart';
 
 /// [globalInitializer()]
 /// Function to initialise all the pre-app things
@@ -47,6 +48,13 @@ class _MyAppState extends State<MyApp> {
           darkTheme: MyTheme.darkTheme, // for global theme
           themeMode: state.theme,
           home: const SplashScreen(),
+          localizationsDelegates: const [
+            S.delegate,
+            GlobalMaterialLocalizations.delegate,
+            GlobalWidgetsLocalizations.delegate,
+            GlobalCupertinoLocalizations.delegate,
+          ],
+          supportedLocales: S.delegate.supportedLocales,
         ),
       ),
     );

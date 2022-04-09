@@ -5,6 +5,7 @@
 * Created By: singsys (Harshit Kishor)                                    *
 ************************************************************************ */
 import 'package:flutter/material.dart';
+import 'package:flutter_firebase/generated/l10n.dart';
 import 'package:flutter_firebase/view_models/index.dart';
 
 class CustomAppBar extends StatefulWidget {
@@ -20,7 +21,7 @@ class _CustomAppBarState extends State<CustomAppBar> {
     return BlocBuilder<AppConfigCubit, AppConfigState>(
       builder: (context, state) {
         return AppBar(
-          title: const Text("Welcome"),
+          title: Text(S.of(context).greet),
           actions: [
             Switch(
                 value: state.isDark,
