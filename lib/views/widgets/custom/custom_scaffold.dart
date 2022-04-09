@@ -5,7 +5,7 @@
 * Created By: singsys (Harshit Kishor)                                    *
 ************************************************************************ */
 import 'package:flutter/material.dart';
-import 'package:flutter_firebase/helpers/constant/color_const.dart';
+import 'package:flutter_firebase/views/widgets/custom/custom_appbar.dart';
 
 class CustomScaffold extends StatelessWidget {
   final Color? backgroundColor;
@@ -25,12 +25,14 @@ class CustomScaffold extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        appBar: appBar,
+        appBar: PreferredSize(
+          preferredSize: const Size.fromHeight(60),
+          child: CustomAppBar(),
+        ),
         drawer: drawer,
-        body: Container(
+        body: SizedBox(
           width: double.infinity,
           height: double.infinity,
-          color: backgroundColor ?? ConstColors.background,
           child: child,
         ),
       ),

@@ -10,3 +10,4 @@ export 'bloc_delegates.dart';
 export 'bloc_providers.dart';
 export 'event_status.dart';
 export 'login_bloc/login_bloc.dart';
+export 'app_config_cubit/app_config_cubit.dart';

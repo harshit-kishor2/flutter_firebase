@@ -1,6 +1,5 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_firebase/helpers/index.dart';
 import 'package:flutter_firebase/injection_container.dart' as di;
 import 'package:flutter_firebase/router_generator.dart';
@@ -27,26 +26,28 @@ Future<void> main() async {
   );
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({Key? key}) : super(key: key);
 
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    SystemChrome.setSystemUIOverlayStyle(
-      SystemUiOverlayStyle(
-          statusBarColor: ConstColors.background,
-          statusBarIconBrightness: Brightness.dark,
-          statusBarBrightness: Brightness.dark),
-    );
     return MyBlocProvider(
-      child: MaterialApp(
-        title: ConstStrings.appName,
-        debugShowCheckedModeBanner: false,
-        onGenerateRoute: RoutesConst.generateRoute,
-        theme: MyTheme.lightTheme(context),
-        darkTheme: MyTheme.darkTheme(context), // for global theme
-        home: const SplashScreen(),
+      child: BlocBuilder<AppConfigCubit, AppConfigState>(
+        builder: (context, state) => MaterialApp(
+          title: ConstStrings.appName,
+          debugShowCheckedModeBanner: false,
+          onGenerateRoute: RoutesConst.generateRoute,
+          theme: MyTheme.lightTheme,
+          darkTheme: MyTheme.darkTheme, // for global theme
+          themeMode: state.theme,
+          home: const SplashScreen(),
+        ),
       ),
     );
   }

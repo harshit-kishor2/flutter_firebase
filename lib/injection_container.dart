@@ -18,6 +18,11 @@ Future<void> init() async {
 
 /* ==================================== Features ====================================== */
 
+  //! Cubits
+  di.registerFactory(
+    () => AppConfigCubit(),
+  );
+
   //! blocs
   di.registerFactory(
     () => LoginBloc(loginRepo: di()),

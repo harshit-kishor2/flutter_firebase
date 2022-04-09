@@ -5,7 +5,6 @@
 * Created By: singsys (Harshit Kishor)                                    *
 ************************************************************************ */
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_firebase/injection_container.dart' as sl;
 import 'package:flutter_firebase/view_models/index.dart';
 
@@ -20,6 +19,8 @@ class MyBlocProvider extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
+        BlocProvider<AppConfigCubit>(
+            create: (context) => sl.di<AppConfigCubit>()),
         BlocProvider<LoginBloc>(create: (context) => sl.di<LoginBloc>()),
       ],
       child: child,
