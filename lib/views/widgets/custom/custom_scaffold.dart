@@ -25,8 +25,8 @@ class CustomScaffold extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        appBar: PreferredSize(
-          preferredSize: const Size.fromHeight(60),
+        appBar: const PreferredSize(
+          preferredSize: Size.fromHeight(60),
           child: CustomAppBar(),
         ),
         drawer: drawer,

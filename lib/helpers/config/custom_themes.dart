@@ -253,8 +253,7 @@ class MyTheme {
           ),
           errorMaxLines: null,
           isDense: false,
-          contentPadding:
-              EdgeInsets.only(top: 12, bottom: 12, left: 0, right: 0),
+          contentPadding: EdgeInsets.symmetric(horizontal: 8, vertical: 0),
           isCollapsed: false,
           prefixStyle: TextStyle(
             color: Color(0xdd000000),
@@ -677,8 +676,7 @@ class MyTheme {
           ),
           errorMaxLines: null,
           isDense: false,
-          contentPadding:
-              EdgeInsets.only(top: 12, bottom: 12, left: 0, right: 0),
+          contentPadding: EdgeInsets.symmetric(horizontal: 8, vertical: 0),
           isCollapsed: false,
           prefixStyle: TextStyle(
             color: Color(0xffffffff),

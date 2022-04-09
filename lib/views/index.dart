@@ -6,7 +6,6 @@
 ************************************************************************ */
 export 'ui/auth_screens/forgot_pass.dart';
 export 'ui/auth_screens/login_screen.dart';
-export 'ui/auth_screens/login_screen.dart';
 export 'ui/auth_screens/register_screen.dart';
 export 'ui/auth_screens/splash_screen.dart';
 export 'ui/dashboard_screen/dashboard_screen.dart';
@@ -19,3 +18,5 @@ export 'widgets/common/toast.dart';
 export 'widgets/custom/custom_loading_widget.dart';
 export 'widgets/custom/custom_network_image.dart';
 export 'widgets/custom/custom_scaffold.dart';
+export 'widgets/custom/custom_input.dart';
+export 'widgets/custom/custom_appbar.dart';
