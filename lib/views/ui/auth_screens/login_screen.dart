@@ -25,6 +25,12 @@ class _LoginScreenState extends State<LoginScreen> {
   final TextEditingController _passController = TextEditingController();
 
   @override
+  void initState() {
+    super.initState();
+    context.read<AuthBloc>().add(AuthBlocInitialEvent());
+  }
+
+  @override
   void dispose() {
     _emailController.dispose();
     _passController.dispose();

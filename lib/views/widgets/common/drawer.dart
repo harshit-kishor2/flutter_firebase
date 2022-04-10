@@ -142,13 +142,13 @@ List<Map<String, dynamic>> menus = [
   {
     'name': 'Edit Profile',
     'icon': Icons.verified_user,
-    'route': RoutesConst.splash,
+    'route': RoutesConst.dashboard,
     'active': false,
   },
   {
     'name': 'Change Password',
     'icon': Icons.security,
-    'route': RoutesConst.splash,
+    'route': RoutesConst.changePass,
     'active': false,
   },
 ];

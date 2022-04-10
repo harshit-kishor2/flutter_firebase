@@ -9,13 +9,16 @@ import 'package:flutter/material.dart';
 
 class CustomButton extends StatelessWidget {
   final Widget buttonLabel;
-  final double height = 40;
-  final double width = 80;
-  final Color color = Colors.blue;
+  final double height;
+  final double width;
+  final Color color;
   final void Function()? onTap;
   const CustomButton({
     Key? key,
     required this.buttonLabel,
+    this.height = 40,
+    this.width = 80,
+    this.color = Colors.blue,
     this.onTap,
   }) : super(key: key);
 

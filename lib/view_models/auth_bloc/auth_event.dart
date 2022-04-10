@@ -7,6 +7,8 @@ abstract class AuthEvent extends Equatable {
   List<Object> get props => [];
 }
 
+class AuthBlocInitialEvent extends AuthEvent {}
+
 class RegisterEvent extends AuthEvent {
   final String email;
   final String name;
@@ -43,3 +45,16 @@ class ForgotPAsswordEvent extends AuthEvent {
 class LogoutEvent extends AuthEvent {}
 
 class GoogleSigninEvent extends AuthEvent {}
+
+class ChangePassEvent extends AuthEvent {
+  final String password;
+  final String newPassword;
+  final String confirmPassword;
+  const ChangePassEvent({
+    required this.password,
+    required this.newPassword,
+    required this.confirmPassword,
+  });
+  @override
+  List<Object> get props => [newPassword, confirmPassword, password];
+}

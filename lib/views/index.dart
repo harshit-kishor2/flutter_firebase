@@ -9,7 +9,7 @@ export 'ui/auth_screens/login_screen.dart';
 export 'ui/auth_screens/register_screen.dart';
 export 'ui/auth_screens/splash_screen.dart';
 export 'ui/dashboard_screen/dashboard_screen.dart';
-
+export 'ui/change_pass/change_password_screen.dart';
 // Widget
 export 'widgets/common/drawer.dart';
 export 'widgets/common/loader.dart';

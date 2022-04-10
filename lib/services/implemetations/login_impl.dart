@@ -104,8 +104,39 @@ class AuthImpl implements AuthRepo {
         accessToken: googleAuth?.accessToken,
         idToken: googleAuth?.idToken,
       );
-      await FirebaseAuth.instance.signInWithCredential(credential);
+      await auth.signInWithCredential(credential);
       SharedPref.setBool(key: SharedPref.prefAuth, data: true);
+    } on Exception catch (e) {
+      throw BaseException(code: 500, message: e.toString());
+    } catch (e) {
+      throw BaseException(code: 500, message: e.toString());
+    }
+  }
+
+  @override
+  Future<String> changePassword(Map<String, dynamic> req) async {
+    try {
+      User? currentUser = auth.currentUser;
+      final cred = EmailAuthProvider.credential(
+          email: currentUser?.email ?? '', password: req["password"]);
+
+      UserCredential? relogin =
+          await currentUser?.reauthenticateWithCredential(cred);
+      if (relogin != null) {
+        currentUser?.updatePassword(req["newPassword"]);
+      }
+      return 'Success';
+    } on FirebaseAuthException catch (e) {
+      if (e.code == 'weak-password') {
+        throw const BaseException(
+            code: 500, message: 'The password provided is too weak.');
+      } else if (e.code == 'wrong-password') {
+        throw const BaseException(
+            code: 500, message: 'Wrong password provided');
+      } else {
+        throw const BaseException(
+            code: 500, message: 'Some error in firebase auth excepion');
+      }
     } on Exception catch (e) {
       throw BaseException(code: 500, message: e.toString());
     } catch (e) {

@@ -16,6 +16,7 @@ class RoutesConst {
   static const register = '/register';
   static const forgotPassword = '/forgot-password';
   static const dashboard = '/dashboard';
+  static const changePass = '/change-password';
 
   //Router...
   static Route<dynamic> generateRoute(RouteSettings settings) {
@@ -52,6 +53,12 @@ class RoutesConst {
       case dashboard:
         return _GeneratePageRoute(
           widget: const DashboardScreen(),
+          routeName: settings.name,
+        );
+      //! Change Route
+      case changePass:
+        return _GeneratePageRoute(
+          widget: const ChangePasswordScreen(),
           routeName: settings.name,
         );
       //! Default route (Invalid Url)

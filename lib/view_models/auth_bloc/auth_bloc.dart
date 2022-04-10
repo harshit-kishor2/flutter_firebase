@@ -14,6 +14,10 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     required this.authRepo,
   }) : super(const AuthState()) {
     on<AuthEvent>((event, emit) async {
+      //!InitialState
+      if (event is AuthBlocInitialEvent) {
+        emit(state.initialState);
+      }
       //!RegisterEvent
       if (event is RegisterEvent) {
         emit(
@@ -127,6 +131,36 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
           emit(
             state.copyWith(
                 googleLoinStatus: EventFailed(errorMessage: e.message)),
+          );
+        }
+      }
+      //!ChangePassEvent
+      if (event is ChangePassEvent) {
+        emit(
+          state.copyWith(changePasswordStatus: EventLoading()),
+        );
+        try {
+          if (event.password.isEmpty) {
+            throw const BaseException(message: "Enter your old password !");
+          } else if (event.newPassword.isEmpty) {
+            throw const BaseException(message: "Enter your new password !");
+          } else if (event.confirmPassword.isEmpty) {
+            throw const BaseException(message: "Enter confirm password !");
+          } else if (event.newPassword != event.confirmPassword) {
+            throw const BaseException(message: "Password not match !");
+          } else {
+            await authRepo.changePassword(
+                {"password": event.password, "newPassword": event.newPassword});
+            emit(
+              state.copyWith(
+                  changePasswordStatus: const EventLoaded(
+                      successMessage: "Change pass Successfully")),
+            );
+          }
+        } on BaseException catch (e) {
+          emit(
+            state.copyWith(
+                changePasswordStatus: EventFailed(errorMessage: e.message)),
           );
         }
       }
