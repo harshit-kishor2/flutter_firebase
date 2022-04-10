@@ -9,4 +9,5 @@ abstract class AuthRepo {
   Future<String> postRegister(Map<String, dynamic> req);
   Future<String> postForgotPass(Map<String, dynamic> req);
   Future<bool> logoutService();
+  Future<void> signInWithGoogle();
 }

@@ -17,3 +17,6 @@ samples, guidance on mobile development, and a full API reference.
 
 For Locale Setup
 https://www.raywenderlich.com/10794904-internationalizing-and-localizing-your-flutter-app#
+
+For google signin
+https://dhruvnakum.xyz/flutter-bloc-v8-google-sign-in-and-firebase-authentication-2022-guide

@@ -111,6 +111,25 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
           );
         }
       }
+      //!LogoutEvent
+      if (event is GoogleSigninEvent) {
+        emit(
+          state.copyWith(googleLoinStatus: EventLoading()),
+        );
+        try {
+          await authRepo.signInWithGoogle();
+          emit(
+            state.copyWith(
+                googleLoinStatus: const EventLoaded(
+                    successMessage: "Google login Successfully")),
+          );
+        } on BaseException catch (e) {
+          emit(
+            state.copyWith(
+                googleLoinStatus: EventFailed(errorMessage: e.message)),
+          );
+        }
+      }
     });
   }
 }

@@ -5,12 +5,14 @@ class AuthState {
   final EventStatus registerStatus;
   final EventStatus forgotPasswordStatus;
   final EventStatus logoutStatus;
+  final EventStatus googleLoinStatus;
   final String? userDetails;
   const AuthState({
     this.loginStatus = const EventNotLoaded(),
     this.registerStatus = const EventNotLoaded(),
     this.forgotPasswordStatus = const EventNotLoaded(),
     this.logoutStatus = const EventNotLoaded(),
+    this.googleLoinStatus = const EventNotLoaded(),
     this.userDetails,
   });
 
@@ -21,6 +23,7 @@ class AuthState {
     EventStatus? registerStatus,
     EventStatus? forgotPasswordStatus,
     EventStatus? logoutStatus,
+    EventStatus? googleLoinStatus,
     String? userDetails,
   }) {
     return AuthState(
@@ -28,12 +31,13 @@ class AuthState {
       registerStatus: registerStatus ?? this.registerStatus,
       forgotPasswordStatus: forgotPasswordStatus ?? this.forgotPasswordStatus,
       logoutStatus: logoutStatus ?? this.logoutStatus,
+      googleLoinStatus: googleLoinStatus ?? this.googleLoinStatus,
       userDetails: userDetails ?? this.userDetails,
     );
   }
 
   @override
   String toString() {
-    return 'AuthState(loginStatus: $loginStatus, registerStatus: $registerStatus, forgotPasswordStatus: $forgotPasswordStatus, logoutStatus: $logoutStatus, userDetails: $userDetails)';
+    return 'AuthState(loginStatus: $loginStatus, registerStatus: $registerStatus, forgotPasswordStatus: $forgotPasswordStatus, logoutStatus: $logoutStatus, googleLoinStatus: $googleLoinStatus, userDetails: $userDetails)';
   }
 }

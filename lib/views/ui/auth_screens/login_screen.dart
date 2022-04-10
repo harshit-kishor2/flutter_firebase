@@ -46,9 +46,14 @@ class _LoginScreenState extends State<LoginScreen> {
               ToastMessage.success("Login Successfully");
               Navigator.pushReplacementNamed(context, RoutesConst.dashboard);
             }
-            if (state.loginStatus is EventFailed) {
+            if (state.loginStatus is EventFailed ||
+                state.googleLoinStatus is EventFailed) {
               ToastMessage.error(
                   (state.loginStatus as EventFailed).errorMessage);
+            }
+            if (state.googleLoinStatus is EventLoaded) {
+              ToastMessage.success("Google Login Successfully");
+              Navigator.pushReplacementNamed(context, RoutesConst.dashboard);
             }
           },
           child: Container(
@@ -114,6 +119,19 @@ class _LoginScreenState extends State<LoginScreen> {
                           email: _emailController.text,
                           password: _passController.text));
                     },
+                  ),
+                  const SizedBox(
+                    height: 15,
+                  ),
+                  IconButton(
+                    onPressed: () {
+                      context.read<AuthBloc>().add(GoogleSigninEvent());
+                    },
+                    icon: Image.network(
+                      "https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/1200px-Google_%22G%22_Logo.svg.png",
+                      height: 30,
+                      width: 30,
+                    ),
                   ),
                   const SizedBox(
                     height: 15,
