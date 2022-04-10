@@ -21,7 +21,7 @@ class MyBlocProvider extends StatelessWidget {
       providers: [
         BlocProvider<AppConfigCubit>(
             create: (context) => sl.di<AppConfigCubit>()),
-        BlocProvider<LoginBloc>(create: (context) => sl.di<LoginBloc>()),
+        BlocProvider<AuthBloc>(create: (context) => sl.di<AuthBloc>()),
       ],
       child: child,
     );

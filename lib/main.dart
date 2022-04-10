@@ -7,11 +7,13 @@ import 'package:flutter_firebase/view_models/index.dart';
 import 'package:flutter_firebase/views/index.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'generated/l10n.dart';
+import 'package:firebase_core/firebase_core.dart';
 
 /// [globalInitializer()]
 /// Function to initialise all the pre-app things
 globalInitializer() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   await di.init();
 }
 

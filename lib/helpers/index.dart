@@ -16,3 +16,4 @@ export 'constant/api_const.dart';
 export 'constant/assets_const.dart';
 export 'constant/color_const.dart';
 export 'constant/strings_const.dart';
+export 'common/custom_functions.dart';

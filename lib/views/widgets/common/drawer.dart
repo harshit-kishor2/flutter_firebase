@@ -7,6 +7,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_firebase/helpers/index.dart';
 import 'package:flutter_firebase/router_generator.dart';
+import 'package:flutter_firebase/view_models/index.dart';
 import 'package:flutter_firebase/views/index.dart';
 
 class MyDrawer extends StatefulWidget {
@@ -97,23 +98,34 @@ class _MyDrawer extends State<MyDrawer> {
           },
         ),
         const Divider(),
-        GestureDetector(
-          onTap: () {
-            ToastMessage.showAlertDialog(
-              context,
-              title: "Logout",
-              message: "Are you sure want to logout ?",
-              onTap: () {
-                printError("Logout");
-              },
-            );
+        BlocListener<AuthBloc, AuthState>(
+          listener: (context, state) {
+            if (state.logoutStatus is EventLoaded) {
+              ToastMessage.success("Logout Successfully.");
+              Navigator.pushReplacementNamed(context, RoutesConst.login);
+            }
+            if (state.logoutStatus is EventFailed) {
+              ToastMessage.error("Some error ");
+            }
           },
-          child: const ListTile(
-              leading: Icon(
-                Icons.logout,
-                color: Colors.black,
-              ),
-              title: Text("Logout")),
+          child: GestureDetector(
+            onTap: () {
+              ToastMessage.showAlertDialog(
+                context,
+                title: "Logout",
+                message: "Are you sure want to logout ?",
+                onTap: () {
+                  context.read<AuthBloc>().add(LogoutEvent());
+                },
+              );
+            },
+            child: const ListTile(
+                leading: Icon(
+                  Icons.logout,
+                  color: Colors.black,
+                ),
+                title: Text("Logout")),
+          ),
         ),
       ]),
     );
@@ -122,9 +134,9 @@ class _MyDrawer extends State<MyDrawer> {
 
 List<Map<String, dynamic>> menus = [
   {
-    'name': 'Live Chat',
-    'icon': Icons.chat,
-    'route': RoutesConst.splash,
+    'name': 'Dashboard',
+    'icon': Icons.dashboard,
+    'route': RoutesConst.dashboard,
     'active': false,
   },
   {

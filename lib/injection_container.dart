@@ -25,11 +25,11 @@ Future<void> init() async {
 
   //! blocs
   di.registerFactory(
-    () => LoginBloc(loginRepo: di()),
+    () => AuthBloc(authRepo: di()),
   );
 
   //! Services
-  di.registerLazySingleton<LoginRepo>(() => LoginImpl(dio: di()));
+  di.registerLazySingleton<AuthRepo>(() => AuthImpl());
 
 /* =================================== External ======================================= */
 
