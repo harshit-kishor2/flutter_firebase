@@ -18,6 +18,10 @@ class _DashboardScreenState extends State<DashboardScreen> {
   @override
   Widget build(BuildContext context) {
     return CustomScaffold(
+      appBar: const PreferredSize(
+        child: CustomAppBar(),
+        preferredSize: Size.fromHeight(60),
+      ),
       child: Column(
         children: const [
           Text("Dashboard"),

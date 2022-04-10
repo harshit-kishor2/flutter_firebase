@@ -5,7 +5,6 @@
 * Created By: singsys (Harshit Kishor)                                    *
 ************************************************************************ */
 import 'package:flutter/material.dart';
-import 'package:flutter_firebase/views/widgets/custom/custom_appbar.dart';
 
 class CustomScaffold extends StatelessWidget {
   final Color? backgroundColor;
@@ -25,10 +24,7 @@ class CustomScaffold extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        appBar: const PreferredSize(
-          preferredSize: Size.fromHeight(60),
-          child: CustomAppBar(),
-        ),
+        appBar: appBar,
         drawer: drawer,
         body: SizedBox(
           width: double.infinity,
