@@ -36,8 +36,10 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_bloc: ^8.0.1
+  flutter_local_notifications: ^9.4.0
   flutter_localizations:
     sdk: flutter
+  flutter_native_timezone: ^2.0.0
   flutter_speed_dial: ^5.1.0
   fluttertoast: ^8.0.9
   get_it: ^7.2.0

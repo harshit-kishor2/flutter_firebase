@@ -20,3 +20,4 @@ export 'widgets/custom/custom_network_image.dart';
 export 'widgets/custom/custom_scaffold.dart';
 export 'widgets/custom/custom_input.dart';
 export 'widgets/custom/custom_appbar.dart';
+export 'ui/dashboard_screen/local_notification.dart';

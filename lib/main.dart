@@ -14,7 +14,14 @@ import 'package:firebase_core/firebase_core.dart';
 globalInitializer() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
+  await NotificationService.init(initSchedule: true);
+  NotificationService.onNotifications.stream.listen(onclickNotification);
+
   await di.init();
+}
+
+void onclickNotification(String? payload) {
+  printError("Notification Clicked");
 }
 
 Future<void> main() async {

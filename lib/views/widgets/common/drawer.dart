@@ -140,9 +140,9 @@ List<Map<String, dynamic>> menus = [
     'active': false,
   },
   {
-    'name': 'Edit Profile',
-    'icon': Icons.verified_user,
-    'route': RoutesConst.dashboard,
+    'name': 'Local Notification',
+    'icon': Icons.notification_important,
+    'route': RoutesConst.localNoti,
     'active': false,
   },
   {

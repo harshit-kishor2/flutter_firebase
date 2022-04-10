@@ -17,6 +17,7 @@ class RoutesConst {
   static const forgotPassword = '/forgot-password';
   static const dashboard = '/dashboard';
   static const changePass = '/change-password';
+  static const localNoti = '/local-nnotification';
 
   //Router...
   static Route<dynamic> generateRoute(RouteSettings settings) {
@@ -59,6 +60,12 @@ class RoutesConst {
       case changePass:
         return _GeneratePageRoute(
           widget: const ChangePasswordScreen(),
+          routeName: settings.name,
+        );
+      //!Local Notification
+      case localNoti:
+        return _GeneratePageRoute(
+          widget: const LocalNotification(),
           routeName: settings.name,
         );
       //! Default route (Invalid Url)
